@@ -33,6 +33,8 @@ function makeCategoryDirectory(dirPath) {
     for (let j = 0; j < subCategory.length; j++) {
       let page = $(subCategory[j]).attr("href");
 
+      let subCatName = $(subCategory[j]).text();
+      makeCategoryDirectory(__dirname + "/Download/" + catName + "/" + subCatName);
       for (let k = 0; k < 20; k++) {
         //downloading from each page
         let pageBody = await rp.get(page + "page/" + (k + 1));
@@ -44,7 +46,7 @@ function makeCategoryDirectory(dirPath) {
           let $f = cheerio.load(bookPage);
           let url = $f(".downloadandreadbook > a.btn").attr("href");
           let fileName = url.split("/");
-          let downloading = await download(encodeURI(url), __dirname + "/Download/" + catName + "/" + fileName[fileName.length - 1]);
+          let downloading = await download(encodeURI(url), __dirname + "/Download/" + catName + "/" + subCatName + "/" + fileName[fileName.length - 1]);
           if (downloading !== true) console.log(downloading);
         }
       }
