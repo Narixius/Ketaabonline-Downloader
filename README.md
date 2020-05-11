@@ -4,7 +4,7 @@ You can download all the documents of [KetaabOnline.ir](KetaabOnline.ir) just wi
 
 ## Usage
 
-```js
-npm install // Or yarn
+```bash
+npm install
 node ./index
 ```
