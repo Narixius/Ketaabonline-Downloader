@@ -37,7 +37,13 @@ function makeCategoryDirectory(dirPath) {
       makeCategoryDirectory(__dirname + "/Download/" + catName + "/" + subCatName);
       for (let k = 0; k < 20; k++) {
         //downloading from each page
-        let pageBody = await rp.get(page + "page/" + (k + 1));
+        let pageBody;
+        try {
+          pageBody = await rp.get(page + "page/" + (k + 1));
+        } catch (e) {
+          console.log("page " + (k + 1) + " not found.");
+          break;
+        }
         let $ = cheerio.load(pageBody);
         let booksOnPage = $("a.productlink");
         for (let z = 0; z < booksOnPage.length; z++) {
