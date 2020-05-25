@@ -6,6 +6,8 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "cli-progress": "^3.8.2",
+    "cloudflare-bypasser": "^0.0.3",
+    "cloudscraper": "^4.6.0",
     "request": "^2.88.2",
     "request-promise": "^4.2.5"
   },
